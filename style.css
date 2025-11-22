@@ -1,0 +1,92 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #0a0a0a;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+}
+
+.title {
+  margin-bottom: 25px;
+  font-size: 32px;
+  background: linear-gradient(90deg, #ff00ff, #00ffff, #ff9900);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.keyboard {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 25px;
+  background: #111;
+  border-radius: 14px;
+  box-shadow: 0 0 30px #000;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* KEY STYLE */
+.key {
+  width: 70px;
+  height: 80px;
+  border-radius: 10px;
+  background: #1a1a1a;
+  border: 2px solid #222;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  transition: 0.15s ease;
+  position: relative;
+  color: #ddd;
+  box-shadow: 0 0 10px #000 inset;
+}
+
+/* RGB OUTLINE */
+.key::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(45deg, 
+              #ff0040, #ff00ff, #7d00ff, 
+              #0033ff, #00eaff, #00ff6a,
+              #d6ff00, #ff8c00);
+  -webkit-mask: 
+    linear-gradient(#000 0 0) content-box, 
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  animation: rgbGlow 3s linear infinite;
+}
+
+@keyframes rgbGlow {
+  from { filter: hue-rotate(0deg); }
+  to   { filter: hue-rotate(360deg); }
+}
+
+/* KEY PRESS EFFECT */
+.key:active,
+.key.active {
+  transform: translateY(3px);
+  background: #333;
+  color: #fff;
+  box-shadow: 0 0 15px #00ffff;
+}
